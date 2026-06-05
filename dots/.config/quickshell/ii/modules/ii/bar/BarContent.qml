@@ -89,12 +89,15 @@ Item { // Bar content region
                 colBackground: barLeftSideMouseArea.hovered ? Appearance.colors.colLayer1Hover : ColorUtils.transparentize(Appearance.colors.colLayer1Hover, 1)
             }
 
-            ActiveWindow {
-                Layout.leftMargin: 10 + (leftSidebarButton.visible ? 0 : Appearance.rounding.screenRounding)
-                Layout.rightMargin: Appearance.rounding.screenRounding
-                Layout.fillWidth: true
+            Resources {
+                visible: root.useShortenedForm === 0
+                Layout.alignment: Qt.AlignVCenter
                 Layout.fillHeight: true
                 visible: root.useShortenedForm === 0
+            }
+
+            Item {
+                Layout.fillWidth: true
             }
         }
     }
@@ -112,11 +115,6 @@ Item { // Bar content region
             id: leftCenterGroup
             anchors.verticalCenter: parent.verticalCenter
             implicitWidth: root.centerSideModuleWidth
-
-            Resources {
-                alwaysShowAllResources: root.useShortenedForm === 2
-                Layout.fillWidth: root.useShortenedForm === 2
-            }
 
             Media {
                 visible: root.useShortenedForm < 2
